@@ -32,6 +32,7 @@ NEW_BRANCH="$SHORT_HASH-$INPUT_DESTINATION_NEW_BRANCH"
 TITLE="($SHORT_HASH) $INPUT_GIT_MESSAGE"
 
 export TOKEN_GITHUB=$TOKEN_GITHUB
+git config --global --add safe.directory /github/workspace
 git config --global user.email "$INPUT_USER_EMAIL"
 git config --global user.name "$INPUT_USER_NAME"
 
