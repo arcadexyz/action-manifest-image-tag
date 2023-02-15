@@ -26,15 +26,15 @@ then
   return -1
 fi
 
-TARGET_DIR=$(mktemp -d)
-SHORT_HASH=$(git rev-parse --short HEAD)
-NEW_BRANCH="$SHORT_HASH-$INPUT_DESTINATION_NEW_BRANCH"
-TITLE="($SHORT_HASH) $INPUT_GIT_MESSAGE"
-
 export TOKEN_GITHUB=$TOKEN_GITHUB
 git config --global --add safe.directory "*"
 git config --global user.email "$INPUT_USER_EMAIL"
 git config --global user.name "$INPUT_USER_NAME"
+
+TARGET_DIR=$(mktemp -d)
+SHORT_HASH=$(git rev-parse --short HEAD)
+NEW_BRANCH="$SHORT_HASH-$INPUT_DESTINATION_NEW_BRANCH"
+TITLE="($SHORT_HASH) $INPUT_GIT_MESSAGE"
 
 echo "Cloning target git repo"
 git clone "https://$TOKEN_GITHUB@github.com/$INPUT_DESTINATION_REPO.git" "$TARGET_DIR"
