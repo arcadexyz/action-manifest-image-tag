@@ -55,8 +55,8 @@ then
   git push -u origin HEAD:$NEW_BRANCH
 
   echo "Creating a pull request"
-  gh pr create -t $TITLE \
-               -b $TITLE \
+  gh pr create -t "$TITLE" \
+               -b "$TITLE" \
                -B $INPUT_DESTINATION_BASE_BRANCH \
                -H $NEW_BRANCH
 else
