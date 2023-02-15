@@ -1,0 +1,39 @@
+name: 'Manifest Image Tag'
+description: 'Uses sed to set a new image tag in a k8s manifest'
+inputs:
+  destination_file_path:
+    description: 'Relative file path from repo root'
+    required: true
+  destination_repo:
+    description: 'Destination repository'
+    required: true
+  user_name:
+    description: 'GitHub username used to commit'
+    required: true
+  user_email:
+    description: 'User email used to commit'
+    required: true
+  destination_new_branch:
+    description: 'Target destination branc'
+    required: true
+  destination_base_branch:
+    description: 'Target base branch'
+    required: true
+  git_message:
+    description: 'Message used to commit and open PR'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.destination-file-path }}
+    - ${{ inputs.destination-repo }}
+    - ${{ inputs.user-name }}
+    - ${{ inputs.user-email }}
+    - ${{ inputs.destination-new-branch }}
+    - ${{ inputs.destination-base-branch }}
+    - ${{ inputs.git_message }}
+branding:
+  icon: 'git-commit'
+  color: 'green'
+
