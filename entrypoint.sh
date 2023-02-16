@@ -33,6 +33,7 @@ git config --global user.name "$INPUT_USER_NAME"
 
 TARGET_DIR=$(mktemp -d)
 SHORT_HASH=$(git rev-parse --short HEAD)
+HEAD_COMMIT_MSG=$(git show -s --format=%s)
 NEW_BRANCH="$SHORT_HASH-$INPUT_DESTINATION_NEW_BRANCH"
 TITLE="($SHORT_HASH) $INPUT_GIT_MESSAGE"
 
@@ -56,7 +57,7 @@ then
 
   echo "Creating a pull request"
   gh pr create -t "$TITLE" \
-               -b "$TITLE" \
+               -b "$HEAD_COMMIT_MSG" \
                -B $INPUT_DESTINATION_BASE_BRANCH \
                -H $NEW_BRANCH
 else
