@@ -37,7 +37,7 @@ NEW_BRANCH="$SHORT_HASH-$INPUT_DESTINATION_NEW_BRANCH"
 TITLE="($SHORT_HASH) $INPUT_GIT_MESSAGE"
 
 echo "Cloning target git repo"
-git clone "https://oauth2:$GH_TOKEN@github.com/$INPUT_DESTINATION_REPO.git" "$TARGET_DIR"
+git clone "https://$GH_TOKEN@github.com/$INPUT_DESTINATION_REPO.git" "$TARGET_DIR"
 cd "$TARGET_DIR"
 git checkout -b "$NEW_BRANCH"
 
