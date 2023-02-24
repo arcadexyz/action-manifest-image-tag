@@ -45,7 +45,7 @@ cd "$TARGET_DIR"
 git checkout -b "$NEW_BRANCH"
 
 echo "Setting new image tag"
-sed -ir "s/newtag: [a-zA-Z0-9]\+/newtag: $SHORT_HASH/g" "$INPUT_DESTINATION_FILE_PATH"
+sed -ir "s/newtag: [a-zA-Z0-9]\+/newtag: \"$SHORT_HASH\"/g" "$INPUT_DESTINATION_FILE_PATH"
 
 git add $INPUT_DESTINATION_FILE_PATH
 
